@@ -1,0 +1,19 @@
+- name: Install component
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ component_packages }}"
+  become: true
+
+- name: Add configuration files
+  block:
+    - name: Ensure configuration directory exists
+      ansible.builtin.file:
+        path: "{{ component_configuration_directory }}"
+        state: directory
+    - name: Copy config file(s)
+      ansible.builtin.template:
+        src: "files/{{ item }}"
+        dest: "{{ component_configuration_directory }}/{{ item }}"
+      loop: "{{ component_configuration_files }}"
+  when: component_configuration_directory is defined
