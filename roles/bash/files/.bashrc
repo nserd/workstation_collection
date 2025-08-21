@@ -27,10 +27,10 @@ unset rc
 
 # Prompt
 git-branch() {
-    git branch --show-current 2> /dev/null | sed 's#^# #g'
+    git branch --show-current 2>/dev/null | sed 's/^/ /'
 }
 
-export PS1="\[\e[1;94m\]\u\[\e[0m\]\[\e[37m\][\[\e[0m\]\w\[\e[33m\]\$(git-branch)\[\e[37m\]]\[\e[0m\]> "
+export PS1='\[\e[1;94m\]\u\[\e[m\]\[\e[37m\][\[\e[m\]\w\[\e[33m\]$(git-branch)\[\e[37m\]]\[\e[m\]> '
 
 # History
 shopt -s histappend
