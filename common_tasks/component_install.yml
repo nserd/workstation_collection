@@ -13,8 +13,10 @@
       ansible.builtin.file:
         path: "{{ component_configuration_directory }}"
         state: directory
+        mode: u=rwx,g=rx,o=rx
     - name: Copy config file(s)
       ansible.builtin.template:
         src: "files/{{ item }}"
         dest: "{{ component_configuration_directory }}/{{ item }}"
+        mode: u=rw,g=r,o=r
       loop: "{{ component_configuration_files }}"
