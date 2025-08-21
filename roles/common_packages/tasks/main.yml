@@ -6,24 +6,24 @@
 
 - name: Install
   block:
-  - name: Show packages to install
-    debug:
-      var: common_packages_install
+    - name: Show packages to install
+      ansible.builtin.debug:
+        var: common_packages_install
 
-  - name: Install common packages
-    package:
-      name: "{{ common_packages_install }}"
-      state: present
-    become: true
+    - name: Install common packages
+      ansible.builtin.package:
+        name: "{{ common_packages_install }}"
+        state: present
+      become: true
 
 - name: Remove
   when: common_packages_remove | length > 0
   block:
-  - name: Show packages to remove
-    debug:
-      var: common_packages_remove
-  - name: Remove unnecessary packages
-    package:
-      name: "{{ common_packages_remove }}"
-      state: present
-    become: true
+    - name: Show packages to remove
+      ansible.builtin.debug:
+        var: common_packages_remove
+    - name: Remove unnecessary packages
+      ansible.builtin.package:
+        name: "{{ common_packages_remove }}"
+        state: present
+      become: true
