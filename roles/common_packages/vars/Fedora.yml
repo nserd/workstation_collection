@@ -1,0 +1,32 @@
+common_packages_install:
+  - rsync
+  - rclone
+  - unzip
+  - bind-utils
+  - cronie
+  - xclip
+  - cargo
+  - bash-completion
+  - vim
+  - htop
+  - ncdu
+  - wget
+  - glibc-langpack-ru
+  - tar
+  - tree
+  - nmap
+  - telnet
+  - keepassxc
+  - openssl
+  - cryptsetup
+  - openconnect
+  - ImageMagick
+  - ffmpeg
+  - pwgen
+  - jq
+  - yq
+common_packages_remove:
+  - "@gnome-desktop"
+  - "@libreoffice"
+  - libreoffice-*
+  - wofi
