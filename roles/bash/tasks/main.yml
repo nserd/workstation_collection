@@ -1,0 +1,18 @@
+---
+- name: Copy user bashrc
+  ansible.builtin.template:
+    src: files/.bashrc
+    dest: ~/.bashrc
+    mode: u=rw,g=r,o=r
+
+- name: Ensure user bashrc dir exist
+  ansible.builtin.file:
+    path: ~/.bashrc.d
+    state: directory
+    mode: u=rwx,g=rx,o=rx
+
+- name: Copy aliases
+  ansible.builtin.template:
+    src: files/bash_aliases
+    dest: ~/.bashrc.d/bash_aliases"
+    mode: u=rw,g=r,o=r
