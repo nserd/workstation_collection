@@ -1,9 +1,8 @@
 ---
 - name: Install component
   ansible.builtin.package:
-    name: "{{ item }}"
+    name: "{{ component_packages }}"
     state: present
-  loop: "{{ component_packages }}"
   become: true
 
 - name: Add configuration files
