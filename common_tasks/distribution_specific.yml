@@ -6,8 +6,23 @@
     fail_msg: "'{{ ansible_distribution }}' not supported. Supported distributions: {{ supported_distributions }}"
     quiet: true
 
-- name: Include distribution specific vars
-  ansible.builtin.include_vars: "{{ role_path }}/vars/{{ ansible_distribution }}.yml"
+- name: Add distribution specifis vars & tasks
+  vars:
+    vars_file: "{{ role_path }}/vars/{{ ansible_distribution }}.yml"
+    tasks_file: "{{ role_path }}/tasks/setup_{{ ansible_distribution }}.yml"
+  block:
+    - name: Check distribution specific files exists
+      ansible.builtin.stat:
+        path: "{{ item }}"
+      loop:
+        - "{{ vars_file }}"
+        - "{{ tasks_file }}"
+      register: files
 
-- name: Include distribution specific tasks
-  ansible.builtin.include_tasks: "{{ role_path }}/tasks/setup_{{ ansible_distribution }}.yml"
+    - name: Include distribution specific vars
+      ansible.builtin.include_vars: "{{ role_path }}/vars/{{ ansible_distribution }}.yml"
+      when: (files.results | selectattr('item', 'equalto', vars_file) | first).stat.exists
+
+    - name: Include distribution specific tasks
+      ansible.builtin.include_tasks: "{{ role_path }}/tasks/setup_{{ ansible_distribution }}.yml"
+      when: (files.results | selectattr('item', 'equalto', tasks_file) | first).stat.exists
