@@ -1,0 +1,46 @@
+---
+- name: Distribution specific tasks
+  ansible.builtin.include_tasks: ../../common_tasks/distribution_specific.yml
+  vars:
+    supported_distributions: [Fedora]
+
+- name: Install Hyprland
+  ansible.builtin.include_tasks: ../../common_tasks/component_install.yml
+  vars:
+    component_packages: "{{ hyprland_packages }}"
+    component_configuration_directory: ~/.config/hypr
+    component_configuration_files:
+      - hyprland.conf
+      - hyprlock.conf
+      - hypridle.conf
+      - hyprpaper.conf
+
+- name: Setup Hyprshot
+  block:
+    - name: Ensure screenshots dir exist
+      ansible.builtin.file:
+        path: "{{ hyprland_hyprshot_screenshots_dir }}"
+        state: directory
+        mode: u=rwx,g=rx,o=rx
+
+    - name: Add a screenshot cleanup task
+      ansible.builtin.cron:
+        name: Hyprshot screenshots cleanup
+        special_time: daily
+        job: "find {{ hyprland_hyprshot_screenshots_dir }} -name '*_hyprshot.png' -mtime +{{ hyprland_hyprshot_screenshots_retention_days }} -delete"
+
+- name: Setup Hyprsunset
+  block:
+    - name: Add Hyprsunset wrapper
+      ansible.builtin.template:
+        src: files/hyprsunset_wrapper
+        dest: "~/.local/bin/hyprsunset_wrapper"
+        mode: u=rwx,g=rx,o=
+
+    - name: Add symlink
+      ansible.builtin.file:
+        src: "~/.local/bin/hyprsunset_wrapper"
+        dest: "/usr/bin/hyprsunset_wrapper"
+        state: link
+      become: true
+      when: not ansible_check_mode

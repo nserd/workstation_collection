@@ -1,0 +1,5 @@
+---
+- name: Enable Fedora Copr solopasha/hyprland
+  community.general.copr:
+    name: solopasha/hyprland
+  become: true

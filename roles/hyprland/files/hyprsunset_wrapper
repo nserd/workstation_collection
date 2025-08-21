@@ -1,0 +1,66 @@
+#! /bin/python
+
+import argparse
+import subprocess
+import time
+from datetime import datetime, time as dt_time
+
+def str_to_time(s):
+    try:
+        h, m = map(int, s.split(':'))
+        return dt_time(h, m)
+    except ValueError:
+        print(f"Invalid time format: {s}. Use HH:MM.")
+        exit(1)
+
+def is_within_range(now, start_time, end_time):
+    return start_time <= now <= end_time if start_time < end_time else now >= start_time or now <= end_time
+
+def get_args():
+    parser = argparse.ArgumentParser(description='Hyprsunset daemon with time range.')
+    parser.add_argument('--start-time', required=True, help='Start time in HH:MM format')
+    parser.add_argument('--end-time', required=True, help='End time in HH:MM format')
+    parser.add_argument('hyprsunset_args', nargs='*', help='Arguments to pass to hyprsunset')
+
+    return parser.parse_args()
+
+def start_hyprsunset(hypr_process, args):
+    if hypr_process is None or hypr_process.poll() is not None:
+        if hypr_process is not None:
+            print(f"hyprsunset exited unexpectedly at {datetime.now()}")
+        try:
+            print(f"Started hyprsunset at {datetime.now()} with args: {args}")
+            return subprocess.Popen(['hyprsunset'] + args)
+        except Exception as e:
+            print(f"Failed to start hyprsunset: {e}")
+            return None
+
+def stop_hyprsunset(hypr_process):
+    if hypr_process is not None and hypr_process.poll() is None:
+        hypr_process.terminate()
+        hypr_process.wait()
+        print(f"Stopped hyprsunset at {datetime.now()}")
+        return None
+    else:
+        return hypr_process
+
+def main():
+    args = get_args()
+    start_time = str_to_time(args.start_time)
+    end_time = str_to_time(args.end_time)
+
+    try:
+        hypr_process = None
+        while True:
+            if is_within_range(datetime.now().time(), start_time, end_time):
+                hypr_process = start_hyprsunset(hypr_process, args.hyprsunset_args)
+            else:
+                hypr_process = stop_hyprsunset(hypr_process)
+
+            time.sleep(60)
+    except KeyboardInterrupt:
+        print('Stopped wrapper daemon by the user')
+        exit(0)
+
+if __name__ == "__main__":
+    main()

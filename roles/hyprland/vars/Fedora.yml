@@ -1,0 +1,8 @@
+---
+hyprland_packages:
+  - hyprland-devel
+  - hyprlock
+  - hypridle
+  - hyprpaper
+  - hyprsunset
+  - hyprshot
