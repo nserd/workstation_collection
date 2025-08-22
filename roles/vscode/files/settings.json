@@ -1,0 +1,20 @@
+{
+    "redhat.telemetry.enabled": false,
+    "window.customMenuBarAltFocus": false,
+    "workbench.colorTheme": "Default Dark modern",
+    "workbench.colorCustomizations": {
+        "{{ vscode_theme }}": {
+            "titleBar.activeBackground": "#191919cc",
+            "titleBar.activeForeground":"#ffffff"
+        }
+    },
+    "window.titleBarStyle": "custom",
+    "workbench.editor.enablePreview": false,
+    "explorer.confirmDelete": false,
+    "workbench.settings.applyToAllProfiles": [
+        "editor.fontFamily"
+    ],
+
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "editor.fontLigatures": true
+}

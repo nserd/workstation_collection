@@ -1,0 +1,12 @@
+---
+- name: Distribution specific tasks
+  ansible.builtin.include_tasks: ../../common_tasks/distribution_specific.yml
+  vars:
+    supported_distributions: [Fedora]
+
+- name: Install Visual Studio Code
+  ansible.builtin.include_tasks: ../../common_tasks/component_install.yml
+  vars:
+    component_packages: [code]
+    component_configuration_directory: ~/.config/Code/User/
+    component_configuration_files: [settings.json]
