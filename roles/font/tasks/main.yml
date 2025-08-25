@@ -1,0 +1,7 @@
+---
+- name: Download font
+  ansible.builtin.unarchive:
+    src: "{{ font_link }}"
+    dest: ~/.local/share/fonts/{{ font_name }}
+    remote_src: true
+  notify: Build font information caches

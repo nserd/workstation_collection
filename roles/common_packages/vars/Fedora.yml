@@ -6,7 +6,6 @@ common_packages_install:
   - bind-utils
   - cronie
   - xclip
-  - cargo
   - bash-completion
   - vim
   - htop
