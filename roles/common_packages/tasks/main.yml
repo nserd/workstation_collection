@@ -25,5 +25,5 @@
     - name: Remove unnecessary packages
       ansible.builtin.package:
         name: "{{ common_packages_remove }}"
-        state: present
+        state: absent
       become: true
