@@ -7,6 +7,7 @@
 
 - name: Add configuration files
   when: component_configuration_directory is defined
+  become: "{{ component_configuration_become | default(false) }}"
   block:
     - name: Ensure configuration directory exists
       ansible.builtin.file:
@@ -19,4 +20,3 @@
         dest: "{{ component_configuration_directory }}/{{ item }}"
         mode: u=rw,g=r,o=r
       loop: "{{ component_configuration_files }}"
-  become: "{{ component_configuration_become | default(false) }}"

@@ -1,6 +1,7 @@
 ---
 hyprland_packages:
   - hyprland-devel
+  - hyprland-qtutuls
   - hyprlock
   - hypridle
   - hyprpaper

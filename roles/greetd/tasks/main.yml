@@ -11,5 +11,4 @@
   ansible.builtin.systemd:
     name: greetd
     enabled: true
-    state: restarted
   become: true
