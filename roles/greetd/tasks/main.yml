@@ -1,0 +1,13 @@
+---
+- name: Install Greetd
+  ansible.builtin.include_tasks: ../../common_tasks/component_install.yml
+  vars:
+    component_packages: [greetd, tuigreet]
+    component_configuration_directory: /etc/greetd/
+    component_configuration_files: [config.toml]
+
+- name: Enable and start greetd service
+  ansible.builtin.systemd:
+    name: greetd
+    enabled: true
+    state: restarted

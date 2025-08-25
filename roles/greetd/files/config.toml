@@ -1,0 +1,6 @@
+[terminal]
+vt = 1
+
+[default_session]
+command = "tuigreet -rt --cmd Hyprland"
+user = "{{ ansible_user }}"
