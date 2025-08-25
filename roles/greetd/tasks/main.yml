@@ -5,9 +5,11 @@
     component_packages: [greetd, tuigreet]
     component_configuration_directory: /etc/greetd/
     component_configuration_files: [config.toml]
+    component_configuration_become: true
 
 - name: Enable and start greetd service
   ansible.builtin.systemd:
     name: greetd
     enabled: true
     state: restarted
+  become: true

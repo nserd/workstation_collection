@@ -19,3 +19,4 @@
         dest: "{{ component_configuration_directory }}/{{ item }}"
         mode: u=rw,g=r,o=r
       loop: "{{ component_configuration_files }}"
+  become: "{{ component_configuration_become | default(false) }}"
