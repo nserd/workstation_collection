@@ -1,0 +1,19 @@
+---
+- name: Install Greetd
+  ansible.builtin.include_tasks: ../../common_tasks/component_install.yml
+  vars:
+    component_packages: [rclone]
+    component_configuration_directory: ~/.config/systemd/user/
+    component_configuration_files: [rclone@.service]
+
+- name: Ensure rclone directory exists
+  ansible.builtin.file:
+    path: "{{ rclone_directory }}"
+    state: directory
+    mode: u=rwx,g=rx,o=rx
+
+- name: Enable service httpd and ensure it is not masked
+  ansible.builtin.systemd:
+    name: "rclone@{{ rclone_directory | basename }}"
+    enabled: true
+    masked: false
