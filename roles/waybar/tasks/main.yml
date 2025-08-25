@@ -1,0 +1,7 @@
+---
+- name: Install Waybar
+  ansible.builtin.include_tasks: ../../common_tasks/component_install.yml
+  vars:
+    component_packages: [waybar]
+    component_configuration_directory: ~/.config/waybar/
+    component_configuration_files: [config.jsonc, style.css]
