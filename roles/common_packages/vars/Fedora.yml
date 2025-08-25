@@ -28,4 +28,5 @@ common_packages_remove:
   - "@gnome-desktop"
   - "@libreoffice"
   - libreoffice-*
+  - unoconv
   - wofi

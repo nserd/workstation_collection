@@ -1,7 +1,13 @@
 ---
+- name: Ensure font directory exists
+  ansible.builtin.file:
+    path: "~/.local/share/fonts/{{ font_name }}"
+    state: directory
+    mode: u=rwx,g=rx,o=rx
+
 - name: Download font
   ansible.builtin.unarchive:
     src: "{{ font_link }}"
-    dest: ~/.local/share/fonts/{{ font_name }}
+    dest: "~/.local/share/fonts/{{ font_name }}"
     remote_src: true
   notify: Build font information caches
