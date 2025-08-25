@@ -39,7 +39,7 @@
 
     - name: Add symlink
       ansible.builtin.file:
-        src: "~/.local/bin/hyprsunset_wrapper"
+        src: "/home/{{ ansible_user_id }}/.local/bin/hyprsunset_wrapper"
         dest: "/usr/bin/hyprsunset_wrapper"
         state: link
       become: true
