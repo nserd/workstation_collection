@@ -25,6 +25,7 @@ common_packages_install:
   - jq
   - yq
   - google-chrome-stable
+  - clipman
 common_packages_remove:
   - "@gnome-desktop"
   - "@libreoffice"
