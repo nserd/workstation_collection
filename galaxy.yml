@@ -1,0 +1,7 @@
+namespace: nserd
+name: workstation_collection
+version: "1.0.0"
+readme: README.md
+authors:
+  - "Nikita Serdyukov"
+license: "MIT"
