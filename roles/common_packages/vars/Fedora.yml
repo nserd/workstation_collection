@@ -21,7 +21,6 @@ common_packages_install:
   - cryptsetup
   - openconnect
   - ImageMagick
-  - ffmpeg
   - pwgen
   - jq
   - yq
