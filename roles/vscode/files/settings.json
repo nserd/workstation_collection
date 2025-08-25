@@ -3,7 +3,7 @@
     "window.customMenuBarAltFocus": false,
     "workbench.colorTheme": "Default Dark modern",
     "workbench.colorCustomizations": {
-        "{{ vscode_theme }}": {
+        "Default Dark modern": {
             "titleBar.activeBackground": "#191919cc",
             "titleBar.activeForeground":"#ffffff"
         }
