@@ -24,6 +24,7 @@ common_packages_install:
   - pwgen
   - jq
   - yq
+  - google-chrome-stable
 common_packages_remove:
   - "@gnome-desktop"
   - "@libreoffice"
