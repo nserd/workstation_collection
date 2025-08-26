@@ -15,6 +15,6 @@
         "editor.fontFamily"
     ],
 
-    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "editor.fontFamily": "{{ vscode_font_family }}",
     "editor.fontLigatures": true
 }

@@ -10,4 +10,3 @@
     src: "{{ font_link }}"
     dest: "~/.local/share/fonts/{{ font_name }}"
     remote_src: true
-  notify: Rebuild font cache

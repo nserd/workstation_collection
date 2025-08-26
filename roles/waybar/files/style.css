@@ -2,7 +2,7 @@
   border: none;
   border-radius: 4px;
   /* `ttf-font-awesome` is required to be installed for icons */
-  font-family: "Cantarell", "JetBrainsMono Nerd Font";
+  font-family: "Cantarell", "{{ waybar_font_family }}";
 
   /* adjust font-size value to your liking: */
   font-size: 13px;
@@ -135,7 +135,7 @@ window#waybar.chromium {
 }
 
 #clock {
-  font-family: "Jetbrains Mono";
+  /* font-family: "Jetbrains Mono"; */
   font-weight: 800;
   /* background-color: rgba(0, 0, 0, 0); */
   color: white;

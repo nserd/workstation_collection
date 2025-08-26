@@ -18,3 +18,5 @@ hyprland_hyprshot_screenshots_dir: ~/pictures/screenshots
 hyprland_hyprsunset_temperature: 5000
 hyprland_hyprsunset_start_time: "20:00"
 hyprland_hyprsunset_end_time: "09:00"
+
+hyprland_hyprlock_font_family: JetBrains Mono
