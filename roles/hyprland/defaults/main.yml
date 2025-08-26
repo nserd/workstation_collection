@@ -6,7 +6,7 @@ hyprland_monitors_manual:
   - HDMI-A-1, disable
 
 hyprland_terminal: kitty
-hyprland_bar: waybarw $(hyprctl monitors -j | jq -r '.[].name' | tac | head -1)
+hyprland_bar: waybar
 hyprland_notification_daemon: swaync
 hyprland_file_manager: nautilus
 hyprland_menu: rofi -show drun -show-icons

@@ -7,7 +7,7 @@
     component_configuration_files: [config.toml]
     component_configuration_become: true
 
-- name: Enable and start greetd service
+- name: Enable greetd service
   ansible.builtin.systemd:
     name: greetd
     enabled: true

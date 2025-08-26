@@ -11,9 +11,10 @@
     path: "{{ rclone_directory }}"
     state: directory
     mode: u=rwx,g=rx,o=rx
+  notify: Reload user scope systemd
 
-- name: Enable service httpd and ensure it is not masked
+- name: Enable rclone service
   ansible.builtin.systemd:
     name: "rclone@{{ rclone_directory | basename }}"
+    scope: user
     enabled: true
-    masked: false
