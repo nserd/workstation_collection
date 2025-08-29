@@ -17,9 +17,8 @@ def is_within_range(now, start_time, end_time):
     return start_time <= now <= end_time if start_time < end_time else now >= start_time or now <= end_time
 
 def get_args():
-    parser = argparse.ArgumentParser(description='Hyprsunset daemon with time range.')
-    parser.add_argument('--start-time', required=True, help='Start time in HH:MM format')
-    parser.add_argument('--end-time', required=True, help='End time in HH:MM format')
+    parser = argparse.ArgumentParser(description='Hyprsunset wrapper with the ability to set a time range.')
+    parser.add_argument('time_range', type = str, help = 'Time range (HH:MM-HH:MM)')
     parser.add_argument('hyprsunset_args', nargs='*', help='Arguments to pass to hyprsunset')
 
     return parser.parse_args()
@@ -46,8 +45,8 @@ def stop_hyprsunset(hypr_process):
 
 def main():
     args = get_args()
-    start_time = str_to_time(args.start_time)
-    end_time = str_to_time(args.end_time)
+    start_time = str_to_time(args.time_range.split('-')[0])
+    end_time = str_to_time(args.time_range.split('-')[1])
 
     try:
         hypr_process = None
