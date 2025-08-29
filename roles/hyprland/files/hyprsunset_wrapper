@@ -15,9 +15,9 @@ def is_within_range(now, start_time, end_time):
     return start_time <= now <= end_time if start_time < end_time else now >= start_time or now <= end_time
 
 def get_args():
-    parser = argparse.ArgumentParser(description='Hyprsunset wrapper with the ability to set a time range.')
+    parser = argparse.ArgumentParser(description = 'Hyprsunset wrapper with the ability to set a time range.')
     parser.add_argument('time_range', type = str, help = 'Time range (HH:MM-HH:MM)')
-    parser.add_argument('hyprsunset_args', nargs='*', help='Arguments to pass to hyprsunset')
+    parser.add_argument('hyprsunset_args', nargs = '*', help = 'Arguments to pass to hyprsunset')
 
     return parser.parse_args()
 
