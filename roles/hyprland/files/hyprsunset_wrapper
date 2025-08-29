@@ -1,8 +1,6 @@
 #! /bin/python
 
-import argparse
-import subprocess
-import time
+import argparse, subprocess, time
 from datetime import datetime, time as dt_time
 
 def str_to_time(s):
