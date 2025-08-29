@@ -18,7 +18,6 @@ hyprland_print_key: PRINT
 hyprland_decoration_rounding: 15
 
 hyprland_hyprsunset_temperature: 5000
-hyprland_hyprsunset_start_time: "20:00"
-hyprland_hyprsunset_end_time: "09:00"
+hyprland_hyprsunset_time_range: 20:00-09:00
 
 hyprland_hyprlock_font_family: JetBrains Mono
