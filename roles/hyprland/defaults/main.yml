@@ -7,7 +7,7 @@ hyprland_monitors_manual:
 
 hyprland_terminal: kitty
 hyprland_bar: waybar
-hyprland_notification_daemon: swaync
+hyprland_notification_daemon: mako
 hyprland_file_manager: nautilus
 hyprland_menu: rofi -show drun -show-icons
 
@@ -16,8 +16,14 @@ hyprland_hyprshot_screenshots_retention_days: 14
 hyprland_hyprshot_screenshots_dir: ~/pictures/screenshots
 hyprland_print_key: PRINT
 hyprland_decoration_rounding: 15
+hyprland_brightness_level_step: 5
 
 hyprland_hyprsunset_temperature: 5000
 hyprland_hyprsunset_time_range: 20:00-09:00
 
-hyprland_hyprlock_font_family: JetBrains Mono
+hyprland_hyprlock_font_family: Cantarell
+hyprland_hyprlock_monitor: eDP-1
+hyprland_hyprlock_time: {size: "230", position: "0, 85"}
+hyprland_hyprlock_date: {size: "30", position: "0, -100"}
+hyprland_hyprlock_input: {size: "450, 90", position: "0, -200"}
+hyprland_hyprlock_layout: {size: "18", position: "0, 20"}
