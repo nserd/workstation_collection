@@ -31,7 +31,7 @@ mainbox {
 }
 
 inputbar {
-    background-color:   @bg1;
+    background-color:   @bg2;
     border-color:       @ac1;
 
     border:         2px;
@@ -96,5 +96,5 @@ element-text {
 }
 
 element selected {
-    text-color: @bg1;
+    text-color: @bg2;
 }
