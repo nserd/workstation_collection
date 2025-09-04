@@ -1,12 +1,12 @@
 * {
-    bg0:    #181818F2;
-    bg1:    #3B4252;
-    bg2:    #4C566A80;
-    bg3:    #51A2DAF2;
-    fg0:    #D8DEE9;
-    fg1:    #ECEFF4;
-    fg2:    #D8DEE9;
-    fg3:    #4C566A;
+    bg0:    {{ colors.background0 }}cb;
+    bg1:    {{ colors.background1 }};
+    bg2:    {{ colors.background2 }};
+    ac0:    {{ colors.accent0 }};
+    ac1:    {{ colors.accent1 }};
+    fg0:    {{ colors.foreground0 }};
+    fg1:    {{ colors.foreground1 }};
+    fg2:    {{ colors.foreground2 }};
 
     font:   "Cantarell 12";
 
@@ -32,7 +32,7 @@ mainbox {
 
 inputbar {
     background-color:   @bg1;
-    border-color:       @bg3;
+    border-color:       @ac1;
 
     border:         2px;
     border-radius:  16px;
@@ -48,7 +48,7 @@ prompt {
 
 entry {
     placeholder:        "Search";
-    placeholder-color:  @fg3;
+    placeholder-color:  @fg1;
 }
 
 message {
@@ -79,11 +79,11 @@ element {
 }
 
 element normal active {
-    text-color: @bg3;
+    text-color: @ac1;
 }
 
 element selected normal, element selected active {
-    background-color:   @bg3;
+    background-color:   @ac0;
 }
 
 element-icon {
