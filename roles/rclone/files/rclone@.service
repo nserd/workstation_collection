@@ -18,6 +18,10 @@ ExecStartPre=/usr/bin/test -w "${MOUNT_DIR}"
 ExecStartPre=/usr/bin/test -f "${RCLONE_CONF}"
 ExecStartPre=/usr/bin/test -r "${RCLONE_CONF}"
 
+# Cache Warming
+ExecStartPre=/bin/sh -c "/usr/bin/rclone ls %i: > /dev/null"
+ExecStartPre=/bin/sh -c "/usr/bin/rclone lsd %i: > /dev/null"
+
 ExecStart=/usr/bin/rclone mount \
     --config="${RCLONE_CONF}" \
     --rc=false \
@@ -31,7 +35,7 @@ ExecStart=/usr/bin/rclone mount \
     --drive-use-trash \
     --stats=5m \
     --attr-timeout=10s \
-    --dir-cache-time=2h \
+    --dir-cache-time=24h \
     --dir-perms=0770 \
     --file-perms=0660 \
     --poll-interval=10m0s \
