@@ -50,10 +50,8 @@ ExecStart=/usr/bin/rclone mount \
     --uid="%U" \
     "%i:/" "${MOUNT_DIR}"
 
-#Unmount rclone fs
 ExecStop=/bin/fusermount -u "${MOUNT_DIR}"
 
-#Restart info
 Restart=on-failure
 RestartSec=10
 
